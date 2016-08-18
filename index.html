@@ -1,0 +1,37 @@
+<html ng-app>
+  <head>
+  <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
+  <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+  <script src = "data/countries.geojson"></script>
+  <style type="text/css"> #map {height: 100%;} </style>
+  </head>
+  <body>
+  <div id="map">  </div>
+  <script>
+  function countriesStyle (feature){
+  	return{
+  		fillColor : 'red',
+  		weight: 2,
+  		opacity: 1,
+  		color : 'white',
+  		dashArray : 3,
+  		fillOpacity : 0.7
+  	}
+  }
+
+    var map = L.map('map').setView([51.505, -0.09], 4);
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    {
+      attribution: 'Tiles by Mansi'
+
+    }).addTo(map);
+    var countriesLayer = L.geoJson(
+    	countries,
+    	{style: countriesStyle}).addTo(map)
+    </script>
+
+
+     
+
+  </body>
+</html>
